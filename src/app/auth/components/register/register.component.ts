@@ -7,6 +7,7 @@ import { RouterModule } from "@angular/router";
 import { selectIsSubmitting } from "../../store/reducers";
 import { AuthStateInterface } from "../../types/authState.interface";
 import { CommonModule } from "@angular/common";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
     selector: 'apm-register',
@@ -15,7 +16,7 @@ import { CommonModule } from "@angular/common";
     imports: [ReactiveFormsModule, RouterModule, CommonModule]
 })
 
-export class RegisterComponent implements OnInit{
+export class RegisterComponent {
     form = this.fb.nonNullable.group({
        username: ['', Validators.required],
        email: ['', Validators.required],
@@ -26,20 +27,21 @@ export class RegisterComponent implements OnInit{
 
     constructor(
         private fb: FormBuilder,
-        private store: Store<{auth: AuthStateInterface}>
+        private store: Store
+        //private store: Store<{auth: AuthStateInterface}>,
+        //private authService: AuthService
     ) {}  
     
-    ngOnInit(): void {
-        //console.log(this.store)
-    }  
-
     onSubmit() {
         console.log('form', this.form.getRawValue());
 
         const request: RegisterRequestInterface = {
-            user: this.form.getRawValue()
-        }
+            user: this.form.getRawValue()            
+        }        
 
         this.store.dispatch(register({request}))
+        // this.authService
+        //     .register(request)
+        //     .subscribe(res => console.log('Resp', res))
     }    
 }
