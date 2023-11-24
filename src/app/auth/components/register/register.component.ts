@@ -27,9 +27,9 @@ export class RegisterComponent {
 
     constructor(
         private fb: FormBuilder,
-        private store: Store
-        //private store: Store<{auth: AuthStateInterface}>,
-        //private authService: AuthService
+        private store: Store,
+        // private store: Store<{auth: AuthStateInterface}>,
+        // private authService: AuthService
     ) {}  
     
     onSubmit() {
@@ -45,3 +45,5 @@ export class RegisterComponent {
         //     .subscribe(res => console.log('Resp', res))
     }    
 }
+
+//Commented code is for check request

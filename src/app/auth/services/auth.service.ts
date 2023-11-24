@@ -16,13 +16,11 @@ export class AuthService {
     ) {}
 
     register(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
-        const url = environment.apiUrl + '/users';
-        const url1 = 'https://api.realworld.io/api/users'
-
-        const urlLocal = 'http://localhost:3000/api/users'
+        const url = environment.apiUrl + '/users';   
+        const urlLocal = environment.apiUrlLocal + '/users'
 
         return this.http
-            .post<AuthResponseInterface>(url1, data)
+            .post<AuthResponseInterface>(urlLocal, data)
             .pipe(map((response) => response.user))
     }
 }
