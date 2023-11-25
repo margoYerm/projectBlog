@@ -4,16 +4,18 @@ import { Store } from "@ngrx/store";
 import { authActions } from "../../store/actions";
 import { RegisterRequestInterface } from "../../types/registerRequest.interface";
 import { RouterModule } from "@angular/router";
-import { selectIsSubmitting } from "../../store/reducers";
+import { selectIsSubmitting, selectValidationErrors } from "../../store/reducers";
 import { CommonModule } from "@angular/common";
 import { AuthStateInterface } from "../../types/authState.interface";
 import { AuthService } from "../../services/auth.service";
+import { combineLatest } from "rxjs";
+import { BackendErrorMessages } from "src/app/shared/components/backendErrorMessages/backendErrorMessages.component";
 
 @Component({
     selector: 'apm-register',
     templateUrl: './register.component.html',
     standalone: true,    
-    imports: [ReactiveFormsModule, RouterModule, CommonModule]
+    imports: [ReactiveFormsModule, RouterModule, CommonModule, BackendErrorMessages]
 })
 
 export class RegisterComponent {
@@ -23,7 +25,10 @@ export class RegisterComponent {
        password: ['', Validators.required], 
     })
 
-    isSubmitting$ = this.store.select(selectIsSubmitting)
+    data$ = combineLatest({
+        isSubmitting: this.store.select(selectIsSubmitting),
+        backendErrors: this.store.select(selectValidationErrors)
+    })
 
     constructor(
         private fb: FormBuilder,
