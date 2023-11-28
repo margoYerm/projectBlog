@@ -3,7 +3,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
 import { authActions } from "../../store/actions";
 import { RegisterRequestInterface } from "../../types/registerRequest.interface";
-import { RouterModule } from "@angular/router";
+import { RouterLink, RouterModule } from "@angular/router";
 import { selectIsSubmitting, selectValidationErrors } from "../../store/reducers";
 import { CommonModule } from "@angular/common";
 import { AuthStateInterface } from "../../types/authState.interface";
@@ -15,7 +15,12 @@ import { BackendErrorMessages } from "src/app/shared/components/backendErrorMess
     selector: 'apm-register',
     templateUrl: './register.component.html',
     standalone: true,    
-    imports: [ReactiveFormsModule, RouterModule, CommonModule, BackendErrorMessages]
+    imports: [
+        ReactiveFormsModule, 
+        RouterLink, 
+        CommonModule, 
+        BackendErrorMessages
+    ]
 })
 
 export class RegisterComponent {
