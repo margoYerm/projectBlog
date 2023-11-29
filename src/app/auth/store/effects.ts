@@ -31,6 +31,30 @@ export const registerEffect = createEffect((
 }, {functional: true})
 
 
+export const getCurrentUserEffect = createEffect((
+    actions$ = inject(Actions),
+    authService = inject(AuthService),
+    persistanceService = inject(PersistanceService)
+) => {
+    return actions$.pipe(
+        ofType(authActions.getCurrentUser),
+        switchMap(() => {
+            const token = persistanceService.get('accessToken')
+            if(!token) {
+                return of(authActions.getCurrentUserFailure())
+            }
+            return authService.getCurrentUser().pipe(
+                map((currentUser: CurrentUserInterface) => {                                       
+                    return authActions.getCurrentUserSuccess({currentUser})
+                }),
+                catchError(() => {
+                    return of(authActions.getCurrentUserFailure())
+                })
+        )})
+    )
+}, {functional: true})
+
+
 export const redirectAfterRegisterEffect = createEffect(
     (actions$ = inject(Actions), router = inject(Router)) => {
         return actions$.pipe(
