@@ -10,4 +10,6 @@ import { FeedComponent } from "src/app/shared/components/feed/feed.component";
   ]
 })
 
-export class GlobalFeedComponent {}
+export class GlobalFeedComponent {
+  apiUrl = '/articles'
+}
