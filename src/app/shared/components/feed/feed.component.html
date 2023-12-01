@@ -1,6 +1,10 @@
-<ng-container *ngIf="data$ | async as data">
-  <div *ngIf="data.isLoading">Loading...</div>
-  <div *ngIf="data.error"> {{ data.error }} </div>
+<ng-container *ngIf="data$ | async as data"> 
+  <apm-loading *ngIf="data.isLoading"></apm-loading>
+
+  <apm-error-message 
+    *ngIf="data.error"
+    [message]="data.error"
+  ></apm-error-message>
 
   <div *ngIf="data.feed">
     <div class="article-preview"
