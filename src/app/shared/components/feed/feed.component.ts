@@ -59,8 +59,8 @@ export class FeedComponent implements OnInit {
       offset,
       ...parsedUrl.query,
     })
-    const apiUrlWiyhParams = `${parsedUrl.url}?${stringifiedParams}`
+    const apiUrlWithParams = `${parsedUrl.url}?${stringifiedParams}`
     //console.log('offset', offset, parsedUrl, stringifiedParams)
-    this.store.dispatch(feedActions.getFeed({url: apiUrlWiyhParams}))
+    this.store.dispatch(feedActions.getFeed({url: apiUrlWithParams}))
   }
 }
