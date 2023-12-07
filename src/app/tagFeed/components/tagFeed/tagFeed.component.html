@@ -3,7 +3,9 @@
   <div class="container page">
     <div class="row">
       <div class="col-md-9">
-        <apm-feed-toggler></apm-feed-toggler>
+        <apm-feed-toggler
+          [tagName]="tagName"
+        ></apm-feed-toggler>
 
         <apm-feed 
           [apiUrl]="apiUrl"

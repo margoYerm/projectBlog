@@ -5,8 +5,8 @@ import { FeedTogglerComponent } from "src/app/shared/components/feedToggler/feed
 import { PopularTagsComponent } from "src/app/shared/components/popularTags/popularTags.component";
 
 @Component({
-  selector: 'apm-global-feed',
-  templateUrl: './globalFeed.component.html',
+  selector: 'apm-your-feed',
+  templateUrl: './yourFeed.component.html',
   standalone: true,
   imports: [
     FeedComponent,
@@ -16,6 +16,6 @@ import { PopularTagsComponent } from "src/app/shared/components/popularTags/popu
   ]
 })
 
-export class GlobalFeedComponent {
-  apiUrl = '/articles'
+export class YourFeedComponent {
+  apiUrl = '/articles/feed'
 }
