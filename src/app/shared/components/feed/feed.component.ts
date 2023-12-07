@@ -10,6 +10,7 @@ import { LoadingComponent } from "../loading/loading.component";
 import { PaginationComponent } from "../pagination/pagination.component";
 import { environment } from "src/environments/environment";
 import queryString from 'query-string';
+import { TagListComponent } from "../tagList/tagList.component";
 
 @Component({
   selector: 'apm-feed',
@@ -20,7 +21,8 @@ import queryString from 'query-string';
     RouterLink,
     ErrorMessageComponent,
     LoadingComponent,
-    PaginationComponent
+    PaginationComponent,
+    TagListComponent,
   ]
 })
 
