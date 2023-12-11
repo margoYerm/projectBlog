@@ -1,5 +1,8 @@
-<apm-article-form
+<ng-container *ngIf="data$ | async as data">  
+  <apm-article-form
   [initialValues]="initialValues"
-  [isSubmitting]="false"
+  [isSubmitting]="data.isSubmitting"
+  [errors]="data.backendErrors"
   (articleSubmit)="onSubmit($event)"
-></apm-article-form>
+  ></apm-article-form>
+</ng-container>
