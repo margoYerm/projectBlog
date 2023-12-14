@@ -24,7 +24,11 @@
           </div>
 
           <div class="pull-xs-right">
-            ADD TO FAVORITES
+            <apm-add-to-favorites
+              [isFavorited]="article.favorited"
+              [articleSlug]="article.slug"
+              [favoritesCount]="article.favoritesCount"
+            ></apm-add-to-favorites>
           </div>
         </div>
 

@@ -11,6 +11,7 @@ import { PaginationComponent } from "../pagination/pagination.component";
 import { environment } from "src/environments/environment";
 import queryString from 'query-string';
 import { TagListComponent } from "../tagList/tagList.component";
+import { AddToFavoritesComponent } from "../addToFavorites/add-to-favorites.component";
 
 @Component({
   selector: 'apm-feed',
@@ -23,6 +24,7 @@ import { TagListComponent } from "../tagList/tagList.component";
     LoadingComponent,
     PaginationComponent,
     TagListComponent,
+    AddToFavoritesComponent,
   ]
 })
 
